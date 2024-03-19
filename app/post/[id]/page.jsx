@@ -11,15 +11,19 @@ async function loadPost(id) {
 async function Page({ params }) {
     const post = await loadPost(params.id);
     return (
-        <div>
-            <h1>{post.id}.{post.title}</h1>
-            <p>{post.body}</p>
-            <hr />
-            <h3>You might be interested...</h3>
-
-            <Suspense fallback={<div>Loading...</div>}>
-                <PostPages />
-            </Suspense>
+        <div className="p-10">
+            <div className=" text-white">
+                <h1 className="text-xl font-bold flex justify-center">{post.id}.{post.title}</h1>
+                <p>{post.body}</p>
+            </div>
+            <div className="flex justify-center text-xl pt-4">
+                <h2>You might be interested...</h2>
+            </div>
+            <div>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <PostPages />
+                </Suspense>
+            </div>
         </div>
     )
 }
